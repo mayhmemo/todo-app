@@ -35,7 +35,7 @@ export const Home: FC = () => {
       try {
         const response = await db.insert(todoSchema.todo).values({ name })
   
-        Alert.alert("Cadastrado com o ID: " + response.lastInsertRowId);
+        Alert.alert("Registered with ID: " + response.lastInsertRowId);
   
         addTodo({
           id: response.lastInsertRowId,
@@ -52,13 +52,13 @@ export const Home: FC = () => {
 
   async function remove(id: number) {
     try {
-      Alert.alert("Remover", "Deseja remover?", [
+      Alert.alert("Remove", "Do you really want to remove?", [
         {
-          text: "Cancelar",
+          text: "Cancel",
           style: "cancel",
         },
         {
-          text: "Sim",
+          text: "Yes, why not",
           onPress: async () => {
             await db
               .delete(todoSchema.todo)
@@ -78,7 +78,7 @@ export const Home: FC = () => {
 
     if (todo) {
       Alert.alert(
-        `Todo ID: ${todo.id} cadastrado com o nome ${todo.name}`
+        `Todo ID: ${todo.id} registered as ${todo.name}`
       )
     }
   }
@@ -111,8 +111,8 @@ export const Home: FC = () => {
         value={name}
       />
 
-      <Button title="Salvar" onPress={add} />
-      <Button title="Recarregar Banco" onPress={fetchTodos} />
+      <Button title="Save" onPress={add} />
+      <Button title="Refresh DB" onPress={fetchTodos} />
 
       <FlatList
         data={todos}
