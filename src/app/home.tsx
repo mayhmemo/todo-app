@@ -78,7 +78,7 @@ export const Home: FC = () => {
 
     if (todo) {
       Alert.alert(
-        `Todo ID: ${todo.id} registered as ${todo.name}`
+        `Todo ID ${todo.id} registered as "${todo.name}"`
       )
     }
   }
